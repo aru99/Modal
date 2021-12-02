@@ -25,3 +25,18 @@ for (let i = 0; i < btnsOpenModal.length; i++) {
 // we didn't write closeModal(), because that would cause Javascript to execute the function, wwe wrote closeModal so that it is executed as soon as the click function occurs, thus we declared closeModal, we didn't call it openModal()
 modal.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
+
+//keyboard events
+document.addEventListener('keydown', function (e) {
+  console.log(e);
+  //   if (e.key === 'Escape') {
+  //     closeModal();
+  //   }
+
+  if (e.key === 'Escape') {
+    //if the modal does not contain the hidden classs
+    if (!modal.classList.contains('hidden')) {
+      closeModal();
+    }
+  }
+});
