@@ -4,23 +4,24 @@ const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.close-modal');
 const btnsOpenModal = document.querySelectorAll('.show-modal');
-console.log(btnsOpenModal);
+
+//function to Open modal
+
+const openModal = function () {
+  //while selecting the class here, we do not use the dot '.'
+  modal.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+};
+//close modal function, to follow DRY
+const closeModal = function () {
+  modal.classList.add('hidden');
+  overlay.classList.add('hidden');
+};
 
 for (let i = 0; i < btnsOpenModal.length; i++) {
-  btnsOpenModal[i].addEventListener('click', function () {
-    console.log(btnsOpenModal[i].textContent);
-    //while selecting the class here, we do not use the dot '.'
-    modal.classList.remove('hidden');
-    overlay.classList.remove('hidden');
-  });
+  btnsOpenModal[i].addEventListener('click', openModal);
 }
 
-btnCloseModal.addEventListener('click', function () {
-  modal.classList.add('hidden');
-  overlay.classList.add('hidden');
-});
-
-overlay.addEventListener('click', function () {
-  modal.classList.add('hidden');
-  overlay.classList.add('hidden');
-});
+// we didn't write closeModal(), because that would cause Javascript to execute the function, wwe wrote closeModal so that it is executed as soon as the click function occurs, thus we declared closeModal, we didn't call it openModal()
+modal.addEventListener('click', closeModal);
+overlay.addEventListener('click', closeModal);
