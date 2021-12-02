@@ -33,10 +33,9 @@ document.addEventListener('keydown', function (e) {
   //     closeModal();
   //   }
 
-  if (e.key === 'Escape') {
-    //if the modal does not contain the hidden classs
-    if (!modal.classList.contains('hidden')) {
-      closeModal();
-    }
+  //if the modal does not contain the hidden classs
+
+  if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+    closeModal();
   }
 });
